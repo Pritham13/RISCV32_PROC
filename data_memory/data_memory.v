@@ -7,9 +7,9 @@ reg [31:0]register[31:0];
 always@(posedge clk)
 begin
   if(WE)
-  begin
-    register[]
-  end
+    register[A]<=WD;
+  else
+    RD<=register[A];
 end
 
 

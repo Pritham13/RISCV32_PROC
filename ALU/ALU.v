@@ -10,6 +10,7 @@
 `define AND 4'b0111 
 module ALU (input [31:0]srca,srcb,
         input [3:0]ALU_control,
+        input clk,
         input reset,
         output reg [31:0]ALUResult
         );
@@ -19,14 +20,9 @@ begin
   ALUResult<=0;
 end
 
-always @ (posedge clk,posedge reset)
+always @ (posedge clk)
 begin
-    if(reset)
-    begin
-      ALUResult<=0;
-    end
-    else
-    case(ALU_Control)
+    case(ALU_control)
       `ADD:ALUResult<=srca+srcb;
       `SUB:ALUResult<=srca-srcb;
       `SLL:ALUResult<=srca<<srcb;
@@ -35,8 +31,8 @@ begin
       `XOR:ALUResult<=srca^srcb;
       `SRL:ALUResult<=(srca>>srcb);
       `SRA:ALUResult<=srca<<<srcb;
-      `OR:ALUResult<=seca|srcb;
+      `OR:ALUResult<=srca|srcb;
       `AND :ALUResult<=srca&srcb;
     endcase
 end
-
+endmodule
