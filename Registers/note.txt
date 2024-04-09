@@ -1,0 +1,10 @@
+Notes :32 registers , 32 bits wide 
+	input:
+		A1 & A2& A3 5-bit , WD3 32-bit, WE2 - 1 bit
+	output:
+		RD1 & RD2 32 bit 
+	descripption:
+		32 registers 32 bits wide, WE write enable ,when write is 
+		enabled it writes into WD into address A on ht rising edge of
+		the clock if write enable is zero it reads address A into the
+		Read bus RD.	
