@@ -1,5 +1,5 @@
 `define ADD 4'b0000
-`define SUB 4'b1001
+`define SUB 4'b1000
 `define SLL 4'b0001
 `define SLT 4'b0010
 `define SLTU 4'b0011
@@ -12,12 +12,14 @@ module ALU (input [31:0]srca,srcb,
         input [3:0]ALU_control,
         input clk,
         input reset,
-        output reg [31:0]ALUResult
+        output reg [31:0]ALUResult,
+        output reg zero
         );
 
 always @ (posedge reset)
 begin
   ALUResult<=0;
+  zero<=0;
 end
 
 always @ (posedge clk)
@@ -34,5 +36,9 @@ begin
       `OR:ALUResult<=srca|srcb;
       `AND :ALUResult<=srca&srcb;
     endcase
+  if (ALUResult==0)
+    zero<=1;
+  else 
+    zero<=0;
 end
 endmodule
