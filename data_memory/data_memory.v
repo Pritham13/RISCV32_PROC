@@ -11,6 +11,4 @@ begin
   else
     RD<=register[A];
 end
-
-
 endmodule
