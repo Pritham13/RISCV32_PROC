@@ -7,7 +7,12 @@ module control(input  [6:0]op,
 
 always@(op,funct3,funct7)
 begin
-    PCSrc<= zero&
+    PCSrc<= zero&op[6];//needs to be checked
+    ResultSrc<=
+    MemWrite<=
+    ImmSrc<=
+    RegWrite<=
+    //ALU stuff
     ALUSrc<=op[4];
     ALUControl<= {funct7,funct3};
 
