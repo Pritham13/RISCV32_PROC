@@ -5,16 +5,14 @@ module control(input  [6:0]op,
                 output [3:0]ALUControl,
                 output [1:0]ImmSrc);
 
-always@(op,funct3,funct7)
-begin
-    PCSrc<= zero&op[6];//needs to be checked
-    ResultSrc<=
-    MemWrite<=
-    ImmSrc<=
-    RegWrite<=
-    //ALU stuff
-    ALUSrc<=op[4];
-    ALUControl<= {funct7,funct3};
 
-end
+assign PCSrc = {zero, op[6]};//needs to be checked
+
+assign ALUSrc = op[4];
+
+assign ALUControl = {funct7, funct3}; 
+assign ResultSrc = ;
+assign MemWrite = ; 
+assign ImmSrc = ; 
+assign RegWrite = ; 
 endmodule 
