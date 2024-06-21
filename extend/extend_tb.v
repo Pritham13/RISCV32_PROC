@@ -15,6 +15,8 @@ extend uut (
 initial begin
     ext = 12'hABC; // Input value
     #10; // Delay for 10 time units
+    ext = 12'b010101010101;
+    #10;
     $finish; // Finish simulation
 end
 

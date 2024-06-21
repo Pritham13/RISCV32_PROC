@@ -1,0 +1,55 @@
+#! /usr/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/usr/lib64/ivl/system.vpi";
+:vpi_module "/usr/lib64/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib64/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib64/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib64/ivl/va_math.vpi";
+S_0x55e5504f36d0 .scope module, "extend_tb" "extend_tb" 2 3;
+ .timescale -9 -12;
+v0x55e550504990_0 .net "ImmExt", 31 0, L_0x55e550504f70;  1 drivers
+v0x55e550504a80_0 .var "ext", 11 0;
+S_0x55e5504f3860 .scope module, "uut" "extend" 2 9, 3 1 0, S_0x55e5504f36d0;
+ .timescale -9 -12;
+    .port_info 0 /INPUT 12 "ext";
+    .port_info 1 /OUTPUT 32 "ImmExt";
+v0x55e5504ba470_0 .net "ImmExt", 31 0, L_0x55e550504f70;  alias, 1 drivers
+v0x55e5505046b0_0 .net *"_ivl_1", 0 0, L_0x55e550504b50;  1 drivers
+v0x55e550504790_0 .net *"_ivl_2", 19 0, L_0x55e550504c70;  1 drivers
+v0x55e550504850_0 .net "ext", 11 0, v0x55e550504a80_0;  1 drivers
+L_0x55e550504b50 .part v0x55e550504a80_0, 11, 1;
+LS_0x55e550504c70_0_0 .concat [ 1 1 1 1], L_0x55e550504b50, L_0x55e550504b50, L_0x55e550504b50, L_0x55e550504b50;
+LS_0x55e550504c70_0_4 .concat [ 1 1 1 1], L_0x55e550504b50, L_0x55e550504b50, L_0x55e550504b50, L_0x55e550504b50;
+LS_0x55e550504c70_0_8 .concat [ 1 1 1 1], L_0x55e550504b50, L_0x55e550504b50, L_0x55e550504b50, L_0x55e550504b50;
+LS_0x55e550504c70_0_12 .concat [ 1 1 1 1], L_0x55e550504b50, L_0x55e550504b50, L_0x55e550504b50, L_0x55e550504b50;
+LS_0x55e550504c70_0_16 .concat [ 1 1 1 1], L_0x55e550504b50, L_0x55e550504b50, L_0x55e550504b50, L_0x55e550504b50;
+LS_0x55e550504c70_1_0 .concat [ 4 4 4 4], LS_0x55e550504c70_0_0, LS_0x55e550504c70_0_4, LS_0x55e550504c70_0_8, LS_0x55e550504c70_0_12;
+LS_0x55e550504c70_1_4 .concat [ 4 0 0 0], LS_0x55e550504c70_0_16;
+L_0x55e550504c70 .concat [ 16 4 0 0], LS_0x55e550504c70_1_0, LS_0x55e550504c70_1_4;
+L_0x55e550504f70 .concat [ 12 20 0 0], v0x55e550504a80_0, L_0x55e550504c70;
+    .scope S_0x55e5504f36d0;
+T_0 ;
+    %pushi/vec4 2748, 0, 12;
+    %store/vec4 v0x55e550504a80_0, 0, 12;
+    %delay 10000, 0;
+    %pushi/vec4 1365, 0, 12;
+    %store/vec4 v0x55e550504a80_0, 0, 12;
+    %delay 10000, 0;
+    %vpi_call 2 20 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+    .scope S_0x55e5504f36d0;
+T_1 ;
+    %vpi_call 2 25 "$dumpfile", "extend_tb.vcd" {0 0 0};
+    %vpi_call 2 26 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x55e5504f36d0 {0 0 0};
+    %delay 0, 0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "extend_tb.v";
+    "./extend.v";
