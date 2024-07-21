@@ -1,6 +1,6 @@
 !#/usr/bin/zsh
 
-ga .
-gc -m "Updating files"
+git add .
+git commit -m "Updating files"
 
-gp -v
+git push -v
