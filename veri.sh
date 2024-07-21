@@ -9,3 +9,4 @@ echo $vcd;
 
 gtkwave $vcd;
 echo $vcd;
+rm $vcd;
