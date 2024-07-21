@@ -1,12 +1,12 @@
 module instruction_memory(
-    input [31:0] PC,
+    input [31:0] A,
     input reset,
-    output [31:0] Instruction_Code
+    output [31:0] RD
 );
     reg [7:0] Memory [31:0]; // Byte addressable memory with 32 locations
 
-    // Under normal operation (reset = 1), we assign the instr. code, based on PC
-    assign Instruction_Code = {Memory[PC+3],Memory[PC+2],Memory[PC+1],Memory[PC]};
+    // Under normal operation (reset = 1), we assign the instr. code, based on A
+    assign RD = {Memory[A+3],Memory[A+2],Memory[A+1],Memory[A]};
 
     // Initializing memory when reset is zero
     always @(reset)

@@ -1,0 +1,30 @@
+* Note 
+** 32 registers 
+*** 32 bits wide
+* Inputs 
+** 5 bit 
+   - A1
+   - A2
+   - A3
+** 32 bit
+   - WD3
+** 1 bit
+   - WE2
+* Outputs
+** 32 bit
+   - RD1
+   - RD2
+* Description
+** WE 
+   - Write enable 
+   - When is 1 data coming from WD is written into address A on the rising edge of clk
+   - when 0 data is read into bus RD
+* A1 
+  - Write register address
+* A2 & A3
+  - Read register address
+* WD3 
+  - input write data 
+* RD1 & RD2 
+  - Output read data 
+

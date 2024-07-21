@@ -1,4 +1,5 @@
-module control(input  [6:0]op,
+//TODO MemWrite needs to be checked
+module controlUnit(input  [6:0]op,
                 input [2:0]funct3,
                 input funct7,zero,
                 output PCSrc,ResultSrc,MemWrite,ALUSrc,RegWrite,
@@ -6,13 +7,13 @@ module control(input  [6:0]op,
                 output [1:0]ImmSrc);
 
 
-assign PCSrc = {zero, op[6]};//needs to be checked
+assign PCSrc = op[6];
 
-assign ALUSrc = op[4];
+assign ALUSrc = op[5];
 
 assign ALUControl = {funct7, funct3}; 
-assign ResultSrc = ;
-assign MemWrite = ; 
-assign ImmSrc = ; 
-assign RegWrite = ; 
+assign ResultSrc = ~op[4];
+assign MemWrite = ~op[4];
+assign ImmSrc = ;
+assign RegWrite = ;
 endmodule 
