@@ -1,4 +1,5 @@
-//TODO MemWrite needs to be checked
+//TODO check if memwrite and ResektSrc can be merged
+//TODO check if PCSrc is correct
 module controlUnit(input  [6:0]op,
                 input [2:0]funct3,
                 input funct7,zero,

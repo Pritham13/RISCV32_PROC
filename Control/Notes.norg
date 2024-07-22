@@ -1,0 +1,21 @@
+* TODO
+  - ( ) check if PCSrc logic is correct
+  - ( ) check if ResultSrc and memWrite can be merged and if they perform the same functions
+
+
+* Control unit
+** Wires 
+*** ALUControl
+    - for controlling the ALU operations
+*** ALUSrc
+    - to change between R and I type instructions
+*** memWrite
+    - to diff btw S and others
+*** ResultSrc 
+    - to diff btw S and others
+*** ImmSrc
+    - to choose extend operation for extend unit
+*** PCSrc
+    - to control the increment of the PC 
+    -- if it is by 4 or by the term specified by the branch instructions
+

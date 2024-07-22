@@ -3,7 +3,7 @@
 `include "../Registers/Register.v"
 `include "../adder/adder.v"
 module top(input clk,reset);
-wire [31:0] PC =0;
+wire [31:0] PC;
 wire PCSrc;
 wire [31:0]instr;
 wire ResultSrc,MemWrite,ALUSrc,ImmSrc,RegWrite;
