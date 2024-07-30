@@ -1,6 +1,6 @@
 * TODO
-  - ( ) check if PCSrc logic is correct
-  - ( ) check if ResultSrc and memWrite can be merged and if they perform the same functions
+  - (x) check if PCSrc logic is correct
+  - (x) check if ResultSrc and memWrite can be merged and if they perform the same functions
 
 
 * Control unit
@@ -17,5 +17,5 @@
     - to choose extend operation for extend unit
 *** PCSrc
     - to control the increment of the PC 
-    -- if it is by 4 or by the term specified by the branch instructions
+    -- if it added by 4 or by the term specified by the branch instructions
 

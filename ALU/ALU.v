@@ -8,37 +8,37 @@
 `define SRA 4'b1101
 `define OR 4'b0110
 `define AND 4'b0111 
-module ALU (input [31:0]srca,srcb,
-        input [3:0]ALU_control,
+module ALU (input [31:0]SrcA,SrcB,
+        input [3:0]ALUControl,
         input clk,
         input reset,
         output reg [31:0]ALUResult,
-        output reg zero
+        output reg Zero
         );
 
 always @ (posedge reset)
 begin
   ALUResult<=0;
-  zero<=0;
+  Zero<=0;
 end
 
 always @ (posedge clk)
 begin
-    case(ALU_control)
-      `ADD:ALUResult<=srca+srcb;
-      `SUB:ALUResult<=srca-srcb;
-      `SLL:ALUResult<=srca<<srcb;
-      `SLT:ALUResult<=(srca < srcb) ? 32'b1 :32'b0;
-      `SLTU:ALUResult<=(srca < srcb) ? 32'b1 :32'b0;
-      `XOR:ALUResult<=srca^srcb;
-      `SRL:ALUResult<=(srca>>srcb);
-      `SRA:ALUResult<=srca<<<srcb;
-      `OR:ALUResult<=srca|srcb;
-      `AND :ALUResult<=srca&srcb;
+    case(ALUControl)
+      `ADD:ALUResult<=SrcA+SrcB;
+      `SUB:ALUResult<=SrcA-SrcB;
+      `SLL:ALUResult<=SrcA<<SrcB;
+      `SLT:ALUResult<=(SrcA < SrcB) ? 32'b1 :32'b0;
+      `SLTU:ALUResult<=(SrcA < SrcB) ? 32'b1 :32'b0;
+      `XOR:ALUResult<=SrcA^SrcB;
+      `SRL:ALUResult<=(SrcA>>SrcB);
+      `SRA:ALUResult<=SrcA<<<SrcB;
+      `OR:ALUResult<=SrcA|SrcB;
+      `AND :ALUResult<=SrcA&SrcB;
     endcase
   if (ALUResult==0)
-    zero<=1;
+    Zero<=1;
   else 
-    zero<=0;
+    Zero<=0;
 end
 endmodule
