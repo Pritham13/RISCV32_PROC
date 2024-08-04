@@ -1,15 +1,16 @@
 General:
-  - ( ) complete control unit
+- (x) complete control unit
 
 Modules
-  - (x) Registers
-  - (x) ALU
-  - (x) Instruction Memory
-  - ( ) Data Memory
-  - ( ) Mux (ALU)
-  - ( ) Mux (ReadData)
-  - ( ) Adder (for branch)
-  - ( ) Adder (+4 for PC)
-  - ( ) signExtend
-  - (x) Control unit
-  - ( ) Mux (PC)
+- (x) Registers
+- (x) ALU
+- (x) Instruction Memory
+- (x) Data Memory
+- (x) Mux (ALU)
+- (x) Mux (ReadData)
+- (x) Adder (for branch)
+- (x) Adder (+4 for PC)
+- (x) signExtend
+- (x) Control unit
+- (x) Mux (PC)
+

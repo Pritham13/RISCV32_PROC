@@ -1,11 +1,9 @@
-//TODO check if memwrite and ResektSrc can be merged
-//TODO check if PCSrc is correct
 module controlUnit(input  [6:0]op,
                 input [2:0]funct3,
                 input funct7,zero,
-                output PCSrc,ResultSrc,MemWrite,ALUSrc,RegWrite,
+                output reg  PCSrc,ResultSrc,MemWrite,ALUSrc,RegWrite,
                 output [3:0]ALUControl,
-                output [1:0]ImmSrc);
+                output reg [1:0]ImmSrc);
 
 localparam [6:0]R_TYPE  = 7'b0110011,
                 I_TYPE  = 7'b0010011,
@@ -13,10 +11,10 @@ localparam [6:0]R_TYPE  = 7'b0110011,
                 LOAD    = 7'b0000011,
                 BRANCH  = 7'b1100011,
                 JALR    = 7'b1100111,
-                JAL     = 7'b1101111,
+                JAL     = 7'b1101111;
 
 
-assign ALUControl = {funct7, funct3}; 
+//assign ALUControl = {funct7, funct3};
 always @(funct3,funct7,op,zero) begin
     case (op)
         //R-Type instruction

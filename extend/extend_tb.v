@@ -1,30 +1,52 @@
-`timescale 1ns / 1ps // Adjust the timescale as needed
-`include "extend.v"
-module extend_tb;
+module tb_extend;
 
-reg [11:0] ext;
-wire [31:0] ImmExt;
+    // Testbench signals
+    reg [31:0] instr;
+    reg [1:0] ImmSrc;
+    wire [31:0] ImmExt;
 
-// Instantiate the module
-extend uut (
-    .ext(ext),
-    .ImmExt(ImmExt)
-);
+    // Instantiate the extend module
+    extend uut (
+        .instr(instr),
+        .ImmSrc(ImmSrc),
+        .ImmExt(ImmExt)
+    );
 
-// Stimulus generation
-initial begin
-    ext = 12'hABC; // Input value
-    #10; // Delay for 10 time units
-    ext = 12'b010101010101;
-    #10;
-    $finish; // Finish simulation
-end
+    // Test procedure
+    initial begin
+        // Initialize signals
+        instr = 32'd0;
+        ImmSrc = 2'b00;
+        
+        // Wait for a short time
+        #10;
 
-// Dumping the waveform
-initial begin
-    $dumpfile("extend_tb.vcd"); // Specify the name of the dump file
-    $dumpvars(0, extend_tb); // Dump all variables in the module
-    #0; // Delay for 0 time units to start dumping
-end
+        // Test case 1: I-type instruction (ImmSrc = 2'b00)
+        instr = 32'hFFFFF000; // Example I-type instruction with 20-bit immediate
+        ImmSrc = 2'b00;
+        #10;
+        $display("Test case 1: ImmSrc = %b, Instr = %h, ImmExt = %h", ImmSrc, instr, ImmExt);
+        
+        // Test case 2: S-type instruction (ImmSrc = 2'b01)
+        instr = 32'hFF00FF00; // Example S-type instruction
+        ImmSrc = 2'b01;
+        #10;
+        $display("Test case 2: ImmSrc = %b, Instr = %h, ImmExt = %h", ImmSrc, instr, ImmExt);
+        
+        // Test case 3: B-type instruction (ImmSrc = 2'b10)
+        instr = 32'hFFFFF123; // Example B-type instruction
+        ImmSrc = 2'b10;
+        #10;
+        $display("Test case 3: ImmSrc = %b, Instr = %h, ImmExt = %h", ImmSrc, instr, ImmExt);
+        
+        // Test case 4: Default case
+        ImmSrc = 2'b11; // Invalid ImmSrc value
+        #10;
+        $display("Test case 4: ImmSrc = %b, Instr = %h, ImmExt = %h", ImmSrc, instr, ImmExt);
+        
+        // End simulation
+        $finish;
+    end
 
 endmodule
+
