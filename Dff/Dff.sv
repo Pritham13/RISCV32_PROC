@@ -1,6 +1,8 @@
-module Dff(d,clk,reset,q); 
-input d, clk, reset; 
-output reg q; 
+module Dff(
+input [31:0]d,
+input clk, reset,
+output reg [31:0]q
+);
 always@(posedge clk) 
 begin
 if(reset== 1)

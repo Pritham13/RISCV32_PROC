@@ -5,15 +5,19 @@
 `include "../Dff/Dff.sv"
 `include "../Mux/Mux.sv"
 `include "../extend/extend.v"
+`include "../Control/Control.v"
+`include "../instruction_memory/instruction_memory.v"
 module top(input clk,reset);
-wire Result;
+wire [31:0]Result;
 wire [31:0] PC;
 wire PCSrc;
 wire [31:0]instr;
-wire ResultSrc,MemWrite,ALUSrc,ImmSrc,RegWrite;
-wire [2:0]ALUControl;
+wire ResultSrc,MemWrite,ALUSrc,RegWrite;
+wire [1:0]ImmSrc;
+wire [3:0]ALUControl;
 wire [31:0] SrcA,SrcB;
-wire [31:0] WriteData,ImmExt,Zero,ALUResult;
+wire [31:0] WriteData,ImmExt,ALUResult;
+wire Zero;
 wire [31:0] ReadData;
 wire [31:0] PCTarget,PCPlus4,PCNext;
 
@@ -36,7 +40,7 @@ registers register (
 );
 controlUnit control(
   .op(instr[6:0]),
-  .funct3(instr[14,12]),
+  .funct3(instr[14:12]),
   .funct7(instr[30])
 );
 

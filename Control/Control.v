@@ -2,7 +2,7 @@ module controlUnit(input  [6:0]op,
                 input [2:0]funct3,
                 input funct7,zero,
                 output reg  PCSrc,ResultSrc,MemWrite,ALUSrc,RegWrite,
-                output [3:0]ALUControl,
+                output reg [3:0]ALUControl,
                 output reg [1:0]ImmSrc);
 
 localparam [6:0]R_TYPE  = 7'b0110011,
@@ -13,8 +13,7 @@ localparam [6:0]R_TYPE  = 7'b0110011,
                 JALR    = 7'b1100111,
                 JAL     = 7'b1101111;
 
-
-//assign ALUControl = {funct7, funct3};
+reg branch;
 always @(funct3,funct7,op,zero) begin
     case (op)
         //R-Type instruction
@@ -22,37 +21,37 @@ always @(funct3,funct7,op,zero) begin
             RegWrite <= 1;
             MemWrite <= 0;
             ResultSrc <= 2'b00;
-            PCsrc <= 0;
+            PCSrc <= 0;
             ALUSrc<=0;
         end
 
         LOAD :begin
             MemWrite<=0;
             RegWrite<=1;
-            ALUcontrol<=4'b0000;
+            ALUControl<=4'b0000;
             ImmSrc<=2'b00;
             ALUSrc<=1;
             ResultSrc<=2'b01;
-            PCsrc <= 0;
+            PCSrc <= 0;
         end
 
         S_TYPE :begin
             MemWrite<=1;
             RegWrite<=0;
-            ALUcontrol<=4'b0000;
+            ALUControl<=4'b0000;
             ImmSrc<=2'b01;
             ALUSrc<=1;
-            PCsrc <= 0;
+            PCSrc <= 0;
         end
 
         BRANCH :begin
             MemWrite<=0;
             RegWrite<=0;
-            ALUcontrol<=4'b0001;
+            ALUControl<=4'b0001;
             ImmSrc<=2'b10;
             ALUSrc<=0;
             branch <= 1;
-            PCsrc <= branch | zero;
+            PCSrc <= branch | zero;
         end
 
         JAL :begin
@@ -72,4 +71,7 @@ always @(funct3,funct7,op,zero) begin
             end
     endcase
 end
+always@(funct3,funct7,op,zero)
+  ALUControl = {funct7, funct3};
+
 endmodule 
