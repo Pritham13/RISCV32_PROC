@@ -6,7 +6,9 @@ module registers(
     output reg [31:0]RD1,RD2
 );
     integer i;
-    reg [31:0] register [31:0]; reg CPSR, LR; always @(posedge reset) begin for (i=0;i<32;i=i+1)
+    reg [31:0] register [31:0]; reg CPSR, LR; 
+    always @(posedge reset) begin 
+      for (i=0;i<32;i=i+1)
             begin
                 register[i] <= 32'h0; 
             end  

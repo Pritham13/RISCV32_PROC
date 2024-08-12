@@ -10,7 +10,6 @@
 `define AND 4'b0111 
 module ALU (input [31:0]SrcA,SrcB,
         input [3:0]ALUControl,
-        input clk,
         input reset,
         output reg [31:0]ALUResult,
         output reg Zero
@@ -22,7 +21,7 @@ begin
   Zero<=0;
 end
 
-always @ (posedge clk)
+always @ (SrcA or SrcB or ALUControl)
 begin
     case(ALUControl)
       `ADD:ALUResult<=SrcA+SrcB;

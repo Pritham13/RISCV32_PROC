@@ -10,10 +10,10 @@ begin
 end
 initial
 begin
-  clk =0;
+  clk =1;
   reset = 1;
   #10;
-  reset = 0; #1000;
+  reset = 0; #100;
   $finish;
 end
 

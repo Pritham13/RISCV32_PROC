@@ -36,12 +36,21 @@ registers register (
   .WD3(Result),
   .RD1(SrcA),
   .RD2(WriteData),
-  .WE3(RegWrite)
+  .WE3(RegWrite),
+  .reset(reset)
 );
 controlUnit control(
   .op(instr[6:0]),
   .funct3(instr[14:12]),
-  .funct7(instr[30])
+  .funct7(instr[30]),
+  .zero(Zero),
+  .PCSrc(PCSrc),
+  .ResultSrc(ResultSrc),
+  .MemWrite(MemWrite),
+  .ALUSrc(ALUSrc),
+  .RegWrite(RegWrite),
+  .ALUControl(ALUControl),
+  .ImmSrc(ImmSrc)
 );
 
 ALU alu(
@@ -49,7 +58,6 @@ ALU alu(
   .SrcB(SrcB),
   .ALUControl(ALUControl),
   .reset(reset),
-  .clk(clk),
   .Zero(Zero),
   .ALUResult(ALUResult)
 );
@@ -70,7 +78,8 @@ data_memory datamem (
   .A(ALUResult),
   .WD(WriteData),
   .RD(ReadData),
-  .WE(MemWrite)
+  .WE(MemWrite),
+  .clk(clk)
 );
 
 Mux mux_dataMem (

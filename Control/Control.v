@@ -51,7 +51,7 @@ always @(funct3,funct7,op,zero) begin
             ImmSrc<=2'b10;
             ALUSrc<=0;
             branch <= 1;
-            PCSrc <= branch | zero;
+            PCSrc <= branch & zero;
         end
 
         JAL :begin

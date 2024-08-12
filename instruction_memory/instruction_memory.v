@@ -10,51 +10,51 @@ module instruction_memory(
     assign RD = {Memory[A+3], Memory[A+2], Memory[A+1], Memory[A]};
 
     // Initializing memory when reset is zero
-    always @(negedge reset) // Use negedge or posedge depending on your requirements
+    always @(posedge reset) // Use negedge or posedge depending on your requirements
     begin
-        if(!reset)
+        if(reset)
         begin
-            // Set instructions in the memory array
-            Memory[0]  = 8'h33; // LSB of 0x00940333
-            Memory[1]  = 8'h03;
-            Memory[2]  = 8'h94;
-            Memory[3]  = 8'h00; // MSB of 0x00940333
-            
-            Memory[4]  = 8'hb3; // LSB of 0x413903b3
-            Memory[5]  = 8'h03;
-            Memory[6]  = 8'h39;
-            Memory[7]  = 8'h41; // MSB of 0x413903b3
-            
-            Memory[8]  = 8'hb3; // LSB of 0x035a02b3
-            Memory[9]  = 8'h02;
-            Memory[10] = 8'h5a;
-            Memory[11] = 8'h03; // MSB of 0x035a02b3
-            
-            Memory[12] = 8'h33; // LSB of 0x017b4e33
-            Memory[13] = 8'h4e;
-            Memory[14] = 8'h7b;
-            Memory[15] = 8'h01; // MSB of 0x017b4e33
-
-            Memory[16] = 8'hb3; // LSB of 0x019ceb3
-            Memory[17] = 8'hce;
-            Memory[18] = 8'h9c;
-            Memory[19] = 8'h01; // MSB of 0x019ceb3
-            
-            Memory[20] = 8'h33; // LSB of 0x01bd5f33
-            Memory[21] = 8'h5f;
-            Memory[22] = 8'hbd;
-            Memory[23] = 8'h01; // MSB of 0x01bd5f33
-            
-            Memory[24] = 8'hb3; // LSB of 0x00d67fb3
-            Memory[25] = 8'h7f;
-            Memory[26] = 8'hd6;
-            Memory[27] = 8'h00; // MSB of 0x00d67fb3
-            
-            Memory[28] = 8'hb3; // LSB of 0x00f768b3
-            Memory[29] = 8'h68;
-            Memory[30] = 8'hf7;
-            Memory[31] = 8'h00; // MSB of 0x00f768b3
-        end
+          //stack 0 FFC4A303 load
+            Memory[3] = 8'hFF;
+            Memory[2] = 8'hC4;
+            Memory[1] = 8'hA3;
+            Memory[0] = 8'h03;
+            //stack 1 0064A423 Sw
+            Memory[7] = 8'h00;
+            Memory[6] = 8'h64;
+            Memory[5] = 8'hA4;
+            Memory[4] = 8'h23;
+            //stack 2 0062E233 0r
+            Memory[11] = 8'h00;
+            Memory[10] = 8'h62;
+            Memory[9] = 8'hE2;
+            Memory[8] = 8'h33;
+            //stack 3 FE420AE3 Beq
+            Memory[15] = 8'hFE;
+            Memory[14] = 8'h42;
+            Memory[13] = 8'h0A;
+            Memory[12] = 8'hE3;
+            //stack 4 02728863 JAL
+            Memory[19] = 8'h02;
+            Memory[18] = 8'h72;
+            Memory[17] = 8'h88;
+            Memory[16] = 8'h63;
+            //stack 5
+            Memory[23] = 8'h00;
+            Memory[22] = 8'h00;
+            Memory[21] = 8'h00;
+            Memory[20] = 8'h00;
+            //stack 6
+            Memory[27] = 8'h00;
+            Memory[26] = 8'h00;
+            Memory[25] = 8'h00;
+            Memory[24] = 8'h00;
+            //stack 7
+            Memory[31] = 8'h00;
+            Memory[30] = 8'h00;
+            Memory[29] = 8'h00;
+            Memory[28] = 8'h00;
+         end
     end
 
 endmodule
