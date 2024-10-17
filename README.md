@@ -6,3 +6,8 @@
 ## Block Diagram
 ![image](imgs/block_diagram.png)
 
+## TODO
+- [ ] Develop a verification env  
+- [ ] 5 stage pipelined
+- [ ] Develop Hazard Unit 
+
