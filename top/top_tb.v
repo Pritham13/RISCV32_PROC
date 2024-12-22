@@ -1,4 +1,4 @@
-`include "top.v"
+// `include "top.v"
 module top_tb();
 
 reg clk,reset;
@@ -19,7 +19,7 @@ end
 
 initial 
 begin
-  $dumpfile("waves.vcd");
+  $dumpfile("wave.vcd");
   $dumpvars();
 end
 endmodule
